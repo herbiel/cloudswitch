@@ -1,0 +1,88 @@
+{#status.html#}
+{#继承自xadmin/base_site.html#}
+{% extends 'xadmin/base_site.html' %}
+{# 去掉标签栏 #}
+{% block content-nav %}
+
+{% endblock %}
+
+{% block content %}
+    <script src="/static/echarts.min.js"></script>
+    <body>
+     <div>
+        <div id="main1" style="width: 500px;height: 350px;margin-top: 50px;display: inline-block;"></div>
+        <div id="main2" style="width: 500px;height: 350px;margin-top: 50px;display: inline-block;"></div>
+    </div>
+
+    </body>
+
+
+    <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var myChart1 = echarts.init(document.getElementById('main1'));
+        var myChart2 = echarts.init(document.getElementById('main2'));
+
+
+        // 指定图表的配置项和数据
+
+        cpuoption = {
+            title : {
+                 text: 'CPU',
+                 x:'center'
+          },
+          tooltip: {
+            formatter: '{a} <br/>{b} : {c}%'
+          },
+          series: [
+            {
+              name: 'Pressure',
+              type: 'gauge',
+              detail: {
+                formatter: '{value}'
+              },
+              data: [
+                {
+                  value: {{ age }},
+                  name: 'SCORE'
+                }
+              ]
+            }
+          ]
+        };
+        session_option = {
+          title : {
+                 text: '会话状态',
+                 x:'center'
+          },
+          xAxis: {
+            type: 'category',
+            data: ['Startup', 'Peak', 'Sec']
+          },
+          yAxis: {
+            type: 'value'
+          },
+          series: [
+              {
+                  data: [120, 200, 150],
+                  type: 'bar',
+                  itemStyle: {
+                      normal: {
+                          label: {
+                              show: true, //开启显示
+                              position: 'top', //在上方显示
+                              textStyle: { //数值样式
+                                  color: 'black',
+                                  fontSize: 16
+                              }
+                          }
+                      }
+                  },
+              }
+          ]
+        };
+        // 使用刚指定的配置项和数据显示图表。
+        myChart1.setOption(session_option);
+        myChart2.setOption(cpuoption);
+
+    </script>
+{% endblock content %}
