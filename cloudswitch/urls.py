@@ -16,7 +16,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 import xadmin
+from Autodialer import views
 
 urlpatterns = [
     path('xadmin/', xadmin.site.urls),
+    path('celery/',views.CeleryTask.as_view()),
 ]

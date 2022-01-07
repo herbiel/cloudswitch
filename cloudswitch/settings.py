@@ -12,11 +12,27 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 import os,sys
+import djcelery
+
+
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 sys.path.insert(0,os.path.join(BASE_DIR, 'apps'))
 sys.path.insert(0,os.path.join(BASE_DIR, 'extra_apps'))
+
+
+BROKER_URL = 'redis://:123456@127.0.0.1:6379/0'
+CELERYBEAT_SCHEDULER = 'djcelery.schedulers.DatabaseScheduler'
+CELERY_RESULT_BACKEND = 'redis://:123456@127.0.0.1:6379/1'
+CELERY_ENABLE_UTC = False
+CELERY_TIMEZONE = 'Asia/Shanghai'
+CELERY_TASK_RESULT_EXPIRES = 10
+#CELERYD_LOG_FILE = BASE_DIR + "/logs/celery/celery.log"
+#CELERYBEAT_LOG_FILE = BASE_DIR + "/logs/celery/beat.log"
+CELERY_ACCEPT_CONTENT = ['pickle', 'json', 'msgpack', 'yaml']
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
@@ -46,6 +62,7 @@ INSTALLED_APPS = [
     'basic',
     'Autodialer',
     'Report',
+    'djcelery',
 ]
 
 MIDDLEWARE = [
