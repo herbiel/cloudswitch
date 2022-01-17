@@ -6,7 +6,6 @@
 @Author  ：herbiel8800@gmail.com
 @Date    ：2022/1/7 3:04 下午 
 '''
-
 from celery import Celery
 from django.conf import settings
 import os

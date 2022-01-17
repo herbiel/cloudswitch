@@ -21,4 +21,5 @@ from Autodialer import views
 urlpatterns = [
     path('xadmin/', xadmin.site.urls),
     path('celery/',views.CeleryTask.as_view()),
+    path('test/',views.CeleryTest.as_view()),
 ]

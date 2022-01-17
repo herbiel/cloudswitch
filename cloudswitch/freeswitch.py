@@ -32,4 +32,4 @@ def command(command):
         result = e.getBody()
     else:
         result = "null"
-    return
+    return result
