@@ -42,7 +42,7 @@
               },
               data: [
                 {
-                  value: {{ age }},
+                  value: {{ cpu }},
                   name: 'SCORE'
                 }
               ]
@@ -63,7 +63,7 @@
           },
           series: [
               {
-                  data: [120, 200, 150],
+                  data: [{{startup}}, {{ peak }}, {{ sec }}],
                   type: 'bar',
                   itemStyle: {
                       normal: {
