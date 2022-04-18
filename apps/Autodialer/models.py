@@ -37,6 +37,7 @@ class Task(models.Model):
     task_name = models.CharField(max_length=20,verbose_name=u"任务名称",default="")
     number = models.CharField(max_length=20,verbose_name=u"号码", default="")
     describe = models.CharField(max_length=20,verbose_name=u"描述", default="",null=True)
+    finish = models.BooleanField(verbose_name="是否完成",default=False)
     class Meta:
         verbose_name = u"Task"
         verbose_name_plural = verbose_name

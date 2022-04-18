@@ -62,7 +62,8 @@ INSTALLED_APPS = [
     'basic',
     'Autodialer',
     'Report',
-    'djcelery',
+#    'djcelery',
+#    'django_celery_beat'
 ]
 
 MIDDLEWARE = [

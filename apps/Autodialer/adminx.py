@@ -6,6 +6,7 @@
 @Author  ：herbiel8800@gmail.com
 @Date    ：2021/12/31 11:23 上午 
 '''
+from __future__ import absolute_import,unicode_literals
 import xadmin
 from django.template.base import logger
 
@@ -15,6 +16,12 @@ from xadmin import views
 from django.http import HttpResponseRedirect
 import xlrd
 from django.db import transaction
+
+
+#from djcelery.models import (
+#  TaskState, WorkerState,
+#  PeriodicTask, IntervalSchedule, CrontabSchedule,
+#)
 
 
 
@@ -55,3 +62,11 @@ xadmin.site.register(views.CommAdminView, GlobalSetting)
 xadmin.site.register(Broadcastivr, BroadcastPlaybackAdmin)
 xadmin.site.register(Predictive, PredictiveAdmin)
 xadmin.site.register(Task, TaskAdmin)
+
+#celery
+
+#xadmin.site.register(IntervalSchedule) # 存储循环任务设置的时间
+#xadmin.site.register(CrontabSchedule) # 存储定时任务设置的时间
+#xadmin.site.register(PeriodicTask) # 存储任务
+#xadmin.site.register(TaskState) # 存储任务执行状态
+#xadmin.site.register(WorkerState) # 存储执行任务的worker
